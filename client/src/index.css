@@ -1,0 +1,458 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   CHURCH LEADERSHIP PLATFORM — HIGH-FIDELITY DESIGN SYSTEM
+   Design Philosophy: "Sovereign Clarity"
+   - Premium SaaS OS aesthetic: Linear × Notion × ClickUp
+   - Deep navy sidebar, crisp white canvas, warm accent gold
+   - Bento grid layout with layered depth and subtle texture
+   - Typography: Geist (headings) + Inter (UI) + JetBrains Mono (data)
+   ============================================================ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* ── Core Brand Palette ── */
+  --brand-navy:        oklch(0.20 0.055 265);   /* Deep indigo sidebar */
+  --brand-navy-mid:    oklch(0.24 0.050 265);   /* Sidebar hover */
+  --brand-navy-light:  oklch(0.28 0.045 265);   /* Sidebar active */
+  --brand-blue:        oklch(0.52 0.22 262);    /* Primary action */
+  --brand-blue-light:  oklch(0.62 0.20 262);    /* Hover state */
+  --brand-gold:        oklch(0.78 0.14 75);     /* Accent / highlight */
+  --brand-gold-light:  oklch(0.88 0.10 75);     /* Gold tint */
+
+  /* ── Circle Colors ── */
+  --circle-creative:   oklch(0.62 0.18 295);   /* Purple */
+  --circle-spirit:     oklch(0.58 0.19 25);    /* Coral/Red */
+  --circle-community:  oklch(0.60 0.17 160);   /* Teal/Green */
+  --circle-discovery:  oklch(0.62 0.18 220);   /* Sky Blue */
+  --circle-mission:    oklch(0.72 0.15 55);    /* Amber/Orange */
+
+  /* ── Status Colors ── */
+  --status-not-started: oklch(0.62 0.01 260);
+  --status-in-progress: oklch(0.52 0.22 262);
+  --status-waiting:     oklch(0.72 0.15 55);
+  --status-completed:   oklch(0.60 0.17 160);
+
+  /* ── Phase Colors ── */
+  --phase-dedication:    oklch(0.52 0.22 262);
+  --phase-discipleship:  oklch(0.60 0.17 160);
+  --phase-development:   oklch(0.78 0.14 75);
+  --phase-distribution:  oklch(0.62 0.16 35);
+
+  /* ── Semantic Tokens ── */
+  --primary:            var(--brand-blue);
+  --primary-foreground: oklch(0.99 0 0);
+  --background:         oklch(0.985 0.002 250);
+  --foreground:         oklch(0.14 0.020 265);
+  --card:               oklch(1 0 0);
+  --card-foreground:    oklch(0.14 0.020 265);
+  --popover:            oklch(1 0 0);
+  --popover-foreground: oklch(0.14 0.020 265);
+  --secondary:          oklch(0.965 0.005 250);
+  --secondary-foreground: oklch(0.35 0.015 265);
+  --muted:              oklch(0.955 0.005 250);
+  --muted-foreground:   oklch(0.52 0.015 265);
+  --accent:             oklch(0.955 0.005 250);
+  --accent-foreground:  oklch(0.14 0.020 265);
+  --destructive:        oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border:             oklch(0.905 0.008 250);
+  --input:              oklch(0.905 0.008 250);
+  --ring:               var(--brand-blue);
+
+  /* ── Sidebar Tokens ── */
+  --sidebar:                  var(--brand-navy);
+  --sidebar-foreground:       oklch(0.88 0.012 265);
+  --sidebar-primary:          var(--brand-blue);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent:           var(--brand-navy-light);
+  --sidebar-accent-foreground: oklch(0.92 0.010 265);
+  --sidebar-border:           oklch(1 0 0 / 0.07);
+  --sidebar-ring:             var(--brand-blue);
+
+  /* ── Chart Colors ── */
+  --chart-1: var(--brand-blue);
+  --chart-2: var(--circle-community);
+  --chart-3: var(--brand-gold);
+  --chart-4: var(--circle-creative);
+  --chart-5: var(--circle-mission);
+
+  /* ── Elevation / Shadow System ── */
+  --shadow-xs:  0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-sm:  0 1px 3px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-md:  0 4px 6px -1px oklch(0 0 0 / 0.07), 0 2px 4px -2px oklch(0 0 0 / 0.05);
+  --shadow-lg:  0 10px 15px -3px oklch(0 0 0 / 0.08), 0 4px 6px -4px oklch(0 0 0 / 0.05);
+  --shadow-xl:  0 20px 25px -5px oklch(0 0 0 / 0.10), 0 8px 10px -6px oklch(0 0 0 / 0.06);
+  --shadow-inner: inset 0 2px 4px oklch(0 0 0 / 0.05);
+
+  /* ── Easing ── */
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Dark mode (sidebar inherits dark naturally) ── */
+.dark {
+  --background:         oklch(0.12 0.018 265);
+  --foreground:         oklch(0.92 0.008 265);
+  --card:               oklch(0.16 0.020 265);
+  --card-foreground:    oklch(0.92 0.008 265);
+  --popover:            oklch(0.16 0.020 265);
+  --popover-foreground: oklch(0.92 0.008 265);
+  --secondary:          oklch(0.20 0.020 265);
+  --secondary-foreground: oklch(0.75 0.012 265);
+  --muted:              oklch(0.22 0.018 265);
+  --muted-foreground:   oklch(0.58 0.015 265);
+  --accent:             oklch(0.22 0.018 265);
+  --accent-foreground:  oklch(0.92 0.008 265);
+  --border:             oklch(1 0 0 / 0.08);
+  --input:              oklch(1 0 0 / 0.10);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Geist', 'DM Sans', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .flex { min-height: 0; min-width: 0; }
+  @media (min-width: 640px) {
+    .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1440px; }
+  }
+
+  /* ── Bento Card ── */
+  .bento-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out);
+    overflow: hidden;
+  }
+  .bento-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: oklch(0.875 0.010 250);
+  }
+  .bento-card-elevated {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* ── Sidebar Navigation Item ── */
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.4375rem 0.625rem;
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: oklch(0.68 0.018 265);
+    transition: background 150ms var(--ease-out), color 150ms var(--ease-out);
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .nav-item:hover {
+    background: oklch(1 0 0 / 0.06);
+    color: oklch(0.92 0.010 265);
+  }
+  .nav-item.active {
+    background: oklch(1 0 0 / 0.10);
+    color: oklch(0.96 0.008 265);
+    font-weight: 600;
+  }
+  .nav-item.active .nav-icon {
+    color: var(--brand-gold);
+  }
+
+  /* ── Status Badges ── */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-family: 'Inter', sans-serif;
+  }
+  .status-not-started {
+    background: oklch(0.93 0.005 265);
+    color: oklch(0.45 0.015 265);
+    border: 1px solid oklch(0.87 0.008 265);
+  }
+  .status-in-progress {
+    background: oklch(0.93 0.08 262);
+    color: oklch(0.38 0.20 262);
+    border: 1px solid oklch(0.82 0.12 262);
+  }
+  .status-waiting {
+    background: oklch(0.96 0.08 75);
+    color: oklch(0.48 0.14 55);
+    border: 1px solid oklch(0.88 0.10 75);
+  }
+  .status-completed {
+    background: oklch(0.93 0.07 160);
+    color: oklch(0.38 0.15 160);
+    border: 1px solid oklch(0.82 0.10 160);
+  }
+  .priority-high {
+    background: oklch(0.95 0.08 25);
+    color: oklch(0.45 0.18 25);
+    border: 1px solid oklch(0.87 0.10 25);
+  }
+  .priority-medium {
+    background: oklch(0.96 0.08 75);
+    color: oklch(0.48 0.14 55);
+    border: 1px solid oklch(0.88 0.10 75);
+  }
+  .priority-low {
+    background: oklch(0.93 0.05 160);
+    color: oklch(0.45 0.12 160);
+    border: 1px solid oklch(0.85 0.08 160);
+  }
+
+  /* ── Circle Color Dots ── */
+  .circle-dot-creative  { background: var(--circle-creative);  }
+  .circle-dot-spirit    { background: var(--circle-spirit);    }
+  .circle-dot-community { background: var(--circle-community); }
+  .circle-dot-discovery { background: var(--circle-discovery); }
+  .circle-dot-mission   { background: var(--circle-mission);   }
+
+  /* ── Page Entrance Animation ── */
+  @media (prefers-reduced-motion: no-preference) {
+    .page-enter {
+      animation: pageEnter 280ms var(--ease-out) both;
+    }
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0);   }
+    }
+    .card-stagger > * {
+      animation: cardIn 320ms var(--ease-out) both;
+    }
+    .card-stagger > *:nth-child(1) { animation-delay: 0ms; }
+    .card-stagger > *:nth-child(2) { animation-delay: 40ms; }
+    .card-stagger > *:nth-child(3) { animation-delay: 80ms; }
+    .card-stagger > *:nth-child(4) { animation-delay: 120ms; }
+    .card-stagger > *:nth-child(5) { animation-delay: 160ms; }
+    .card-stagger > *:nth-child(6) { animation-delay: 200ms; }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.99); }
+      to   { opacity: 1; transform: translateY(0) scale(1);      }
+    }
+  }
+
+  /* ── Metric Card ── */
+  .metric-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── Pill Tag ── */
+  .pill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    background: var(--muted);
+    color: var(--muted-foreground);
+    border: 1px solid var(--border);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.85 0.005 265);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: oklch(0.75 0.010 265); }
+
+  /* ── Focus Ring ── */
+  *:focus-visible {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ── Topbar Search ── */
+  .topbar-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4375rem 0.875rem;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 0.625rem;
+    font-size: 0.8125rem;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: all 150ms var(--ease-out);
+    min-width: 220px;
+  }
+  .topbar-search:hover {
+    background: var(--background);
+    border-color: oklch(0.82 0.012 250);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── Thread message bubble ── */
+  .msg-bubble {
+    padding: 0.625rem 0.875rem;
+    border-radius: 0 0.75rem 0.75rem 0.75rem;
+    background: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--foreground);
+    max-width: 100%;
+  }
+  .msg-bubble.own {
+    background: oklch(0.93 0.08 262);
+    border-radius: 0.75rem 0 0.75rem 0.75rem;
+    color: oklch(0.25 0.18 262);
+  }
+
+  /* ── Progress bar ── */
+  .progress-track {
+    height: 6px;
+    background: var(--muted);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 9999px;
+    background: var(--brand-blue);
+    transition: width 600ms var(--ease-out);
+  }
+
+  /* ── Kbd ── */
+  kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1rem 0.4rem;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 0.3rem;
+    font-size: 0.6875rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted-foreground);
+    box-shadow: 0 1px 0 var(--border);
+    line-height: 1.5;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ── Notification dot ── */
+  .notif-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: var(--brand-gold);
+    flex-shrink: 0;
+  }
+
+  /* ── Sidebar section label ── */
+  .sidebar-section-label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: oklch(0.42 0.025 265);
+    padding: 0 0.625rem;
+    margin-bottom: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
